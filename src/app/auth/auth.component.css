@@ -1,0 +1,17 @@
+@media only screen and (max-width: 768px) {
+    .up {
+      text-align: center;
+    }
+    .top{
+        margin-top: -2rem;
+    }
+  }
+
+  .content{
+    font-size: 1.18rem;
+  }
+  .content li{
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }

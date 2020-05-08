@@ -1,1 +1,33 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 3.5rem;">
+    <a style="font-family: Arial, Helvetica, sans-serif;font-weight: bolder; font-size: 1.8rem;"class="navbar-brand" routerLink="/">
+      <i class="fab fa-phoenix-framework"></i>
+      <span style="color:red">F</span>
+      <span style="color:blue">I</span>
+      <span style="color: yellowgreen;">N</span>
+      <span style="color:green">E</span>
+      <span style="color:lightsalmon">X</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto" style="font-size: 1.1rem;">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features"><i class="fas fa-medal"></i>  Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact"><i class="fas fa-phone-square-alt"></i> Contact</a>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li><i class="fa fa-user fa-3x" aria-hidden="true" ></i> <a style="color: white;" href="#">Sign Up</a></li>
+        <li><a style="color: white;" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul> -->
+      <ul>
+        <button routerLink="sign-up" style="margin-top: 1rem;height: 35px;" class="btn btn-warning"><i class="fas fa-user-plus"></i>   Sign up</button>
+        <button routerLink="sign-in" style="margin-left: 1rem;margin-top: 1rem;height: 35px;" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>   Login</button>
+      </ul>
+    </div>
+  </nav>

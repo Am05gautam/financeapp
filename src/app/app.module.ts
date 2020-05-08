@@ -19,6 +19,14 @@ import { EditCatComponent } from './home/manage-cat/edit-cat/edit-cat.component'
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ExpSummaryComponent } from './home/exp-summary/exp-summary.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { Navbar2Component } from './shared/navbar2/navbar2.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import 'firebase/firestore';
+import 'firebase/auth';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -38,11 +46,16 @@ import { ExpSummaryComponent } from './home/exp-summary/exp-summary.component';
     NavbarComponent,
     FooterComponent,
     ExpSummaryComponent,
+    DashboardComponent,
+    Navbar2Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
