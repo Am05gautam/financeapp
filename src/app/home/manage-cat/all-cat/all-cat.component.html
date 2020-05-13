@@ -1,1 +1,21 @@
-<p>all-cat works!</p>
+<br> <br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="row">
+                <h4>Available Categories :</h4>
+                <button [routerLink]="['edit-cat']" class="btn btn-success ml-5">Add category</button>
+            </div>
+            <br> <br>
+            <div *ngFor="let category of categories" class="card">
+                <div class="card-body">
+                    <h5>{{category.name}}</h5>
+                    <br> 
+                    <button class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

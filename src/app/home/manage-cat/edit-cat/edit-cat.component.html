@@ -1,1 +1,14 @@
-<p>edit-cat works!</p>
+<br> <br>
+<div class="continer">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <h3>Add Category :</h3>
+            <br>
+            <input class="form-control" type="text" placeholder="Enter category" [(ngModel)]="categoryName">
+            <br> 
+            <button (click)="addCategory()" class="btn btn-success" type="submit">Add category</button>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
