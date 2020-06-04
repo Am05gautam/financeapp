@@ -11,7 +11,14 @@ export class AllCatComponent implements OnInit {
   constructor(public category:CategoryService) { }
 
   ngOnInit(): void {
-    this.categories=this.category.getAllCategories()
+    this.category.getAllCategories().subscribe(res=>{
+      this.categories=res
+      console.log(res)
+    })
   }
 
+  deleteCategory(id){
+    this.category.deleteCategory(id)
+    console.log("delete item")
+  }
 }

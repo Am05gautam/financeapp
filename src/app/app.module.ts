@@ -15,6 +15,7 @@ import { AddExpComponent } from './home/manage-exp/add-exp/add-exp.component';
 import { EditExpComponent } from './home/manage-exp/edit-exp/edit-exp.component';
 import { AllExpComponent } from './home/manage-exp/all-exp/all-exp.component';
 import { AllCatComponent } from './home/manage-cat/all-cat/all-cat.component';
+import { AddCatComponent } from './home/manage-cat/add-cat/add-cat.component';
 import { EditCatComponent } from './home/manage-cat/edit-cat/edit-cat.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -27,6 +28,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import 'firebase/firestore';
 import 'firebase/auth';
 import { environment } from '../environments/environment';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { AuthGuardService } from './services/auth-guard.service';
+
+
 
 @NgModule({
   declarations: [
@@ -48,6 +53,8 @@ import { environment } from '../environments/environment';
     ExpSummaryComponent,
     DashboardComponent,
     Navbar2Component,
+    AddCatComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -55,9 +62,10 @@ import { environment } from '../environments/environment';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgxPageScrollModule,
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

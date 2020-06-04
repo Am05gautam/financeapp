@@ -1,33 +1,71 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  email="am05gautam@gmail.com";
-  password="Gautam@2479";
-  isSignedIn=false;
-  constructor(public router:Router) { }
+  uid=null;
+  constructor(public router:Router,public auth: AngularFireAuth,public db:AngularFirestore) {
+    this.auth.authState.subscribe(res=>{
+      console.log(res)
+      this.uid=res.uid;
+      this.router.navigateByUrl("/home")
+    })
+   }
 
   signIn(email,password){
-    if(email==this.email && password==this.password){
-      this.isSignedIn=true;
-      console.log("logged in")
-      this.router.navigateByUrl("/home")
-    }
-    else{
-      alert("Invalid credentials")
-    }
+    this.auth.signInWithEmailAndPassword(email,password).then(res=>{
+      console.log(res.user.uid)
+      if(res.user.uid){
+        this.uid=res.user.uid
+        this.router.navigateByUrl("/home")
+      }
+
+    }).catch(err=>{
+      console.log(err)
+      alert("Incorrect email or password")
+    })
   }
 
   logout(){
-    console.log("logged out")
-    this.isSignedIn=false
-    this.router.navigateByUrl("/auth")
+    this.auth.signOut().then(res=>{
+      this.uid=null
+      this.router.navigateByUrl("/auth")
+    })
+
   }
 
   isAuthenticated(){
-    return this.isSignedIn
+    if(this.uid){
+      return true
+    }
+    else{
+      return false
+    }
   }
+
+
+  signUp(name,email,password){
+    this.auth.createUserWithEmailAndPassword(email,password).then(res=>{
+      this.db.collection("users").doc(res.user.uid).set({name:name})
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
+      alert("Password should be at least 6 characters")
+    })
+  }
+
+  reset(email){
+    this.auth.sendPasswordResetEmail(email).then(res=>{
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
+      alert("Enter registered email!")
+    })
+  }
+
 }
+

@@ -15,6 +15,8 @@ import { EditExpComponent } from './home/manage-exp/edit-exp/edit-exp.component'
 import { AllCatComponent } from './home/manage-cat/all-cat/all-cat.component';
 import { EditCatComponent } from './home/manage-cat/edit-cat/edit-cat.component';
 import { ExpSummaryComponent } from './home/exp-summary/exp-summary.component';
+import { AddCatComponent } from './home/manage-cat/add-cat/add-cat.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -26,7 +28,7 @@ const routes: Routes = [
     {path:"sign-up",component:SignUpComponent},
     {path:"forget-pswd",component:ForgetPswdComponent},
   ]},
-  {path:"home",component:HomeComponent,
+  {path:"home",component:HomeComponent, canActivate:[AuthGuardService],
   children:[
     {path:"",component:DashboardComponent},
     {path:"manage-exp",component:ManageExpComponent,
@@ -38,7 +40,8 @@ const routes: Routes = [
     {path:"manage-cat",component:ManageCatComponent,
     children:[
       {path:"",component:AllCatComponent},
-      {path:"edit-cat",component:EditCatComponent},
+      {path:"add-cat",component:AddCatComponent},
+      {path:"edit-cat/:id",component:EditCatComponent},
     ]},
     {path:"exp-summary",component:ExpSummaryComponent},
   ]},

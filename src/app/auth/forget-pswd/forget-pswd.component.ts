@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forget-pswd',
@@ -8,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ForgetPswdComponent implements OnInit {
   email;
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService,public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -16,6 +17,9 @@ export class ForgetPswdComponent implements OnInit {
 
   reset(){
     console.log("forgot-pswd")
+    this.auth.reset(this.email)
+    this.auth.isAuthenticated()
     alert("Check your mail.")
+    this.router.navigateByUrl("/auth/sign-in")
   }
 }

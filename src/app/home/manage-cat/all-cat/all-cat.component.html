@@ -5,14 +5,15 @@
         <div class="col-lg-6">
             <div class="row">
                 <h4>Available Categories :</h4>
-                <button [routerLink]="['edit-cat']" class="btn btn-success ml-5">Add category</button>
+                <button [routerLink]="['add-cat']" class="btn btn-success ml-5">Add category</button>
             </div>
             <br> <br>
             <div *ngFor="let category of categories" class="card">
                 <div class="card-body">
                     <h5>{{category.name}}</h5>
                     <br> 
-                    <button class="btn btn-danger">Delete</button>
+                    <button (click)="deleteCategory(category.id)" class="btn btn-danger">Delete</button>
+                    <button [routerLink]="['/home/manage-cat/edit-cat',category.id]" class="btn btn-warning mx-2">Edit</button>
                 </div>
             </div>
         </div>
