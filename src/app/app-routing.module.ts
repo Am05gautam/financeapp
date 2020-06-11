@@ -35,7 +35,7 @@ const routes: Routes = [
     children:[
       {path:"",component:AllExpComponent},
       {path:"add-exp",component:AddExpComponent},
-      {path:"edit-exp",component:EditExpComponent},
+      {path:"edit-exp/:id",component:EditExpComponent},
     ]},
     {path:"manage-cat",component:ManageCatComponent,
     children:[

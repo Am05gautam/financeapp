@@ -10,7 +10,7 @@
             <br> <br>
             <div *ngFor="let category of categories" class="card">
                 <div class="card-body">
-                    <h5>{{category.name}}</h5>
+                    <h6>{{category.name | uppercase}}</h6>
                     <br> 
                     <button (click)="deleteCategory(category.id)" class="btn btn-danger">Delete</button>
                     <button [routerLink]="['/home/manage-cat/edit-cat',category.id]" class="btn btn-warning mx-2">Edit</button>

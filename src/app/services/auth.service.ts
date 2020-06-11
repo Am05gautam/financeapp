@@ -9,10 +9,13 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class AuthService {
   uid=null;
   constructor(public router:Router,public auth: AngularFireAuth,public db:AngularFirestore) {
+    if(localStorage.getItem("uid")){
+      this.uid=localStorage.getItem("uid")
+    }
     this.auth.authState.subscribe(res=>{
       console.log(res)
       this.uid=res.uid;
-      this.router.navigateByUrl("/home")
+      //this.router.navigateByUrl("/home")
     })
    }
 
@@ -20,8 +23,9 @@ export class AuthService {
     this.auth.signInWithEmailAndPassword(email,password).then(res=>{
       console.log(res.user.uid)
       if(res.user.uid){
-        this.uid=res.user.uid
-        this.router.navigateByUrl("/home")
+        this.uid=res.user.uid;
+        localStorage.setItem("uid",this.uid);
+        this.router.navigateByUrl("/home");
       }
 
     }).catch(err=>{
@@ -33,6 +37,7 @@ export class AuthService {
   logout(){
     this.auth.signOut().then(res=>{
       this.uid=null
+      localStorage.removeItem("uid")
       this.router.navigateByUrl("/auth")
     })
 

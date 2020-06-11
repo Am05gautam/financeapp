@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Category } from '../auth/models/category.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
   // categories: Category[]=[]
-  constructor(private db: AngularFirestore) { 
+  constructor(private db: AngularFirestore,public auth:AuthService) { 
     // let category=new Category()
     // category.name="Food"
     // this.categories.push(category);
@@ -25,7 +26,7 @@ export class CategoryService {
     console.log("add category");
     // this.categories.push(category);
     let catObject= Object.assign({},category) 
-    this.db.collection("category").add(catObject).then(res=>{
+    this.db.collection("users").doc(this.auth.uid).collection("category").add(catObject).then(res=>{
       //alert("Category added successfully")
     }).catch(err=>{
       alert("Some error occurred")
@@ -35,7 +36,7 @@ export class CategoryService {
   deleteCategory(id){
     // this.categories.splice(id,1);
     console.log("delete category");
-    this.db.collection("category").doc(id).delete()
+    this.db.collection("users").doc(this.auth.uid).collection("category").doc(id).delete()
   }
 
   // getAllCategories(){
@@ -44,7 +45,7 @@ export class CategoryService {
   // }
 
   getAllCategories(){
-    return this.db.collection("category").snapshotChanges().pipe(
+    return this.db.collection("users").doc(this.auth.uid).collection("category").snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as any;
         const id = a.payload.doc.id;
@@ -60,10 +61,10 @@ export class CategoryService {
   // }
 
   updateCategory(id,updatedCategory){
-    return this.db.collection("category").doc(id).update(Object.assign({},updatedCategory))
+    return this.db.collection("users").doc(this.auth.uid).collection("category").doc(id).update(Object.assign({},updatedCategory))
   }
 
   getCategoryByDocId(id){
-    return this.db.collection("category").valueChanges()
+    return this.db.collection("users").doc(this.auth.uid).collection("category").valueChanges()
   }
 }

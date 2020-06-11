@@ -1,2 +1,27 @@
 <app-navbar2></app-navbar2>
-<p>exp-summary works!</p>
+<br> <br>
+<select class="mx-2" style="background-color: lightyellow;" (change)="changeCat($event)" [(ngModel)]="category">
+    <option [ngValue]="undefined" disabled selected hidden>Select a category</option>
+    <option [value]="cat.name" *ngFor="let cat of categories">{{cat.name}}</option>
+</select>
+<br> <br>
+<table class="table table-hover text-center">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+      <tr *ngFor= "let expence of expences">
+        <td>{{expence.category | uppercase}}</td>
+        <td>{{expence.amount}}</td>
+        <td>{{expence.timestap.toDate() | date }}</td>
+      </tr>
+      <br>
+      <tr>
+          <td></td>
+          <td>Total Expence : {{total}}</td>
+          <td></td>
+      </tr>
+</table>
