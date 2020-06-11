@@ -28,7 +28,7 @@
         <td>{{expence.timestap.toDate() | date }}</td>
         <td>
             <button (click)="delete(expence.id)" class="btn btn-danger">Delete</button>
-            <button [routerLink]="['/home/manage-exp/edit-exp',expence.id]" class="btn btn-warning mx-1">Edit</button>
+            <button [routerLink]="['/home/manage-exp/edit-exp',expence.id]" class="btn btn-warning mx-1 my-1">Edit</button>
         </td>
       </tr>
     </tbody>
