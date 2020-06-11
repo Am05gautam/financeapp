@@ -32,7 +32,6 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { AuthGuardService } from './services/auth-guard.service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
