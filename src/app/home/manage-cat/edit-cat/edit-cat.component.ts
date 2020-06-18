@@ -8,8 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-cat.component.css']
 })
 export class EditCatComponent implements OnInit {
-  catId;
-  category;
+  catId
+  category
   constructor(public categoryservice:CategoryService,public router:Router,public route:ActivatedRoute) {
    }
 
@@ -21,8 +21,7 @@ export class EditCatComponent implements OnInit {
   
   getCategory(){
     this.categoryservice.getCategoryByDocId(this.catId).subscribe(res=>{
-      console.log(res + "category")
-      this.category=res
+      this.category=res;
     })
   }
 

@@ -19,6 +19,6 @@ export class SignUpComponent implements OnInit {
   signUp(){
     console.log("signup request")
     this.auth.signUp(this.name,this.email,this.password)
-    this.router.navigateByUrl("/auth/sign-in")
+    // this.router.navigateByUrl("/auth/sign-in")
   }
 }

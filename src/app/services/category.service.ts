@@ -65,6 +65,6 @@ export class CategoryService {
   }
 
   getCategoryByDocId(id){
-    return this.db.collection("users").doc(this.auth.uid).collection("category").valueChanges()
+    return this.db.collection("users").doc(this.auth.uid).collection("category").doc(id).valueChanges()
   }
 }

@@ -57,6 +57,8 @@ export class AuthService {
     this.auth.createUserWithEmailAndPassword(email,password).then(res=>{
       this.db.collection("users").doc(res.user.uid).set({name:name})
       console.log(res)
+      alert("Successfully signed up")
+      this.router.navigateByUrl("/auth/sign-in")
     }).catch(err=>{
       console.log(err)
       alert("Password should be at least 6 characters")
@@ -71,6 +73,7 @@ export class AuthService {
       alert("Enter registered email!")
     })
   }
+
 
 }
 

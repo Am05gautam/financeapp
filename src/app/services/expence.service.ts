@@ -55,7 +55,7 @@ export class ExpenceService {
   }
 
   getExpenceByDocId(id){
-    return this.db.collection("users").doc(this.auth.uid).collection("expence").valueChanges()
+    return this.db.collection("users").doc(this.auth.uid).collection("expence").doc(id).valueChanges()
   }
 
   

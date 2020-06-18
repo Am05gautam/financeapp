@@ -19,11 +19,17 @@ export class AddExpComponent implements OnInit {
   }
 
   addExpence(){
-    this.expenceservice.addExpence(this.expence).then(res=>{
+    if(this.expence.amount!=null && this.expence.category!=null){
+      this.expenceservice.addExpence(this.expence).then(res=>{
       this.router.navigateByUrl("/home/manage-exp")
     }).catch(err=>{
       alert("Some error occured!")
     })
+    }
+    else{
+      alert("Please fill out the field")
+    }
+    
   }
 
   getUserCats(){

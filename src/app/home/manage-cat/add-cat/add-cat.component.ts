@@ -15,8 +15,12 @@ export class AddCatComponent implements OnInit {
   }
   
   addCategory(){
-    this.category.addCategory(this.categoryName);
-    console.log("add-category-click");
-    this.router.navigateByUrl("/home/manage-cat");
+    if(this.categoryName!=null){
+      this.category.addCategory(this.categoryName);
+      this.router.navigateByUrl("/home/manage-cat");
+    }
+    else{
+      alert("Please fill out the field")
+    }
   }
 }
